@@ -1,0 +1,85 @@
+/* Estilos para la receta */
+.pasos {
+  padding: 1.5rem;
+}
+
+.recipe-result {
+    padding: 1.5rem;
+    background: #fff;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color:#ffffff;
+    box-shadow: 0 25px 15px rgba(0, 0, 0, 0.35);
+    text-align: left;
+  }
+  
+  .recipe-result h2 {
+    color: #1a365d;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .recipe-result h3 {
+    color: #2b6cb0;
+    margin: 1rem 0;
+  }
+  
+  .recipe-result ul, .recipe-result ol {
+    margin-left: 1.5rem;
+  }
+  
+  .recipe-result li{
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    background-color: #0000000e;
+    padding: 5px;
+    border-radius: 5px;
+    
+  }
+  
+  .recipe-tips {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f7fafc;
+    border-left: 4px solid #4299e1;
+    color: #2b6cb0;
+  }
+
+
+  /* Warning Modal */
+.warning-modal {
+  background: #fff3cd;
+  border: 2px solid #ffecb5;
+  border-radius: 10px;
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+}
+
+.warning-modal h2 {
+  color: #856404;
+  margin-bottom: 1rem;
+}
+
+.warning-content p {
+  color: #856404;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.warning-close-button {
+  background: #ffc107;
+  color: #856404;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.warning-close-button:hover {
+  background: #ffca28;
+}
