@@ -4,7 +4,7 @@ import { toPng } from "html-to-image";
 import "./IngredientsInput.css";
 import "./AIResponse.css";
 
-const IngredientInput = () => {
+const IngredientsInput = () => {
   const [symptoms, setSymptoms] = useState([]);
   const [remedy, setRemedy] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
@@ -50,11 +50,11 @@ const IngredientInput = () => {
       symptoms,
       remedyType,
       duration,
-      restrictions
+      restrictions,
     };
 
     try {
-      const response = await fetch("/api/remedies", {
+      const response = await fetch("/api/remides", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestData),
@@ -103,8 +103,8 @@ const IngredientInput = () => {
 
   return (
     <div className="ingredient-input">
-      <button 
-        className="ingredient-button mg-top-20" 
+      <button
+        className="ingredient-button mg-top-20"
         onClick={() => setShowFilters(!showFilters)}
       >
         {showFilters ? "Ocultar Filtros" : "Mostrar Filtros"}
@@ -113,17 +113,23 @@ const IngredientInput = () => {
       <div className={`filters-container ${showFilters ? "" : "collapsed"}`}>
         <div>
           <label className="difficulty-label">Tipo de Remedio:</label>
-          <select value={remedyType} onChange={(e) => setRemedyType(e.target.value)}>
+          <select
+            value={remedyType}
+            onChange={(e) => setRemedyType(e.target.value)}
+          >
             <option value="herbal">Herbal</option>
             <option value="crema">Crema/Pomada</option>
             <option value="infusion">Infusión</option>
-            <option value="compresa">Compresa</option>
+            <option value="Loción">Loción</option>
           </select>
         </div>
 
         <div>
           <label className="meal-label">Duración:</label>
-          <select value={duration} onChange={(e) => setDuration(e.target.value)}>
+          <select
+            value={duration}
+            onChange={(e) => setDuration(e.target.value)}
+          >
             <option value="corto">Corto plazo</option>
             <option value="medio">Mediano plazo</option>
             <option value="largo">Largo plazo</option>
@@ -132,7 +138,10 @@ const IngredientInput = () => {
 
         <div>
           <label className="meal-label">Restricciones:</label>
-          <select value={restrictions} onChange={(e) => setRestrictions(e.target.value)}>
+          <select
+            value={restrictions}
+            onChange={(e) => setRestrictions(e.target.value)}
+          >
             <option value="ninguna">Ninguna</option>
             <option value="embarazo">Embarazo</option>
             <option value="diabetes">Diabetes</option>
@@ -144,33 +153,54 @@ const IngredientInput = () => {
       <div className="ingredients-container">
         <h3>Síntomas:</h3>
         <form onSubmit={handleAddSymptom} className="ingredient-form">
-          <input type="text" placeholder="Escribe un síntoma" className="ingredient-field" />
-          <button type="submit" className="ingredient-button">Añadir</button>
+          <input
+            type="text"
+            placeholder="Escribe un síntoma"
+            className="ingredient-field"
+          />
+          <button type="submit" className="ingredient-button">
+            Añadir
+          </button>
         </form>
 
         {symptoms.length > 0 && (
           <div className="ingredient-list-container">
             <ul className="ingredient-list">
               {symptoms.map((symptom, index) => (
-                <li key={index} onClick={() => handleRemoveSymptom(index)} className="ingredient-item">
+                <li
+                  key={index}
+                  onClick={() => handleRemoveSymptom(index)}
+                  className="ingredient-item"
+                >
                   {symptom}
                 </li>
               ))}
             </ul>
-            <button onClick={() => setSymptoms([])} className="ingredient-button-clear">
+            <button
+              onClick={() => setSymptoms([])}
+              className="ingredient-button-clear"
+            >
               Borrar todo
             </button>
           </div>
         )}
       </div>
 
-      <button onClick={fetchRemedy} className="button-generate-recipe">Generar Remedio</button>
+      <button
+        onClick={fetchRemedy}
+        className="button-generate-recipe"
+        disabled={symptoms.length === 0}
+      >
+        Generar Remedio
+      </button>
 
       {showLoader && (
         <div className="loader modal-overlay">
-          <img src="/logogif.gif" alt="Cargando..." className="logogif" />
+          <img src="/images/logogif.gif" alt="Cargando..." className="logogif" />
           <div className="loading-text">
-            Analizando síntomas<span className="dot">.</span><span className="dot">.</span><span className="dot">.</span>
+            Analizando síntomas<span className="dot">.</span>
+            <span className="dot">.</span>
+            <span className="dot">.</span>
           </div>
         </div>
       )}
@@ -178,10 +208,18 @@ const IngredientInput = () => {
       {showWarning && (
         <div className="modal-overlay">
           <div className="warning-modal">
-            <img width="130px" src="/logoAlert.png" alt="Remed-IA" className="warning-logo" />
+            <img
+              width="130px"
+              src="/images/logoAlert.png"
+              alt="Remed-IA"
+              className="warning-logo"
+            />
             <div className="warning-content">
               <p dangerouslySetInnerHTML={{ __html: warningMessage }} />
-              <button onClick={() => setShowWarning(false)} className="ingredient-button">
+              <button
+                onClick={() => setShowWarning(false)}
+                className="ingredient-button"
+              >
                 Entendido
               </button>
             </div>
@@ -192,7 +230,11 @@ const IngredientInput = () => {
       {remedy && (
         <div id="remedy-content" className="recipe-result">
           <div className="header-recipe">
-            <img src='/logoRemedyIA.png' width='100px' alt="Remed-IA Logo"/>
+            <img
+              src="/images/logoRemedyIA.png"
+              width="100px"
+              alt="Remed-IA Logo"
+            />
           </div>
           <h2>{remedy.title}</h2>
           <h3>Síntomas abordados:</h3>
@@ -213,12 +255,19 @@ const IngredientInput = () => {
               <li key={i}>{step}</li>
             ))}
           </div>
-          {remedy.warnings && <div className="recipe-tips warning-box">⚠️ {remedy.warnings}</div>}
+          {remedy.warnings && (
+            <div className="recipe-tips warning-box">⚠️ {remedy.warnings}</div>
+          )}
           <div id="buttonRecipe" className="flexBetween ">
-            <button onClick={handleDownload} className="ingredient-button">📥 Descargar Remedio</button>
+            <button onClick={handleDownload} className="ingredient-button">
+              📥 Descargar Remedio
+            </button>
           </div>
           <div className="footer-recipe">
-            <h6>Este remedio no sustituye atención médica profesional. Consulta a un especialista.</h6>
+            <h6>
+              Este remedio no sustituye atención médica profesional. Consulta a
+              un especialista.
+            </h6>
           </div>
         </div>
       )}
@@ -226,4 +275,4 @@ const IngredientInput = () => {
   );
 };
 
-export default IngredientInput;
+export default IngredientsInput;
