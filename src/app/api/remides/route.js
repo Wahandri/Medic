@@ -12,7 +12,7 @@ function cleanJson(jsonString) {
 
 // Contexto inicial que se enviará una sola vez
 const initialContext = `
-Eres un experto en medicina tradicional y remedios naturales con 30 años de experiencia. Tu tarea es generar remedios caseros  seguros **en formato JSON** basados en los parámetros que te proporcionaré.
+Eres un experto en medicina tradicional y remedios naturales con 20 años de experiencia. Tu tarea es generar remedios caseros seguros **en formato JSON** basados en los parámetros que te proporcionaré.
 
 📌 **Formato estricto esperado en la respuesta**: SOLO DEVOLVERÁS UN JSON. Sin nada antes ni después.
 {
@@ -28,32 +28,29 @@ Eres un experto en medicina tradicional y remedios naturales con 30 años de exp
     "1. Paso detallado de preparación",
     "2. Indicaciones claras"
   ],
+  "application": [
+    "1. Modo de aplicación",
+    "2. Frecuencia de uso"
+  ],
   "warnings": "Advertencias importantes de seguridad",
-  "tips": "Consejos adicionales"
+  "tips": "Consejos adicionales",
+  "description": "Explicación detallada de cómo funciona el remedio y cómo cada ingrediente o paso contribuye a aliviar los síntomas."
 }
 
 📌 **Instrucciones obligatorias**:
 1 **Formato de salida:** Solo responde en **JSON válido**, sin texto adicional.  
-2 **Ingredientes:** Devuelve solo una lista de nombres de ingredientes (de españa) con cantidades exactas.  
+2 **Ingredientes:** Devuelve solo una lista de nombres de ingredientes (accesibles en España) con cantidades exactas.  
 3 **Pasos de preparación:** Explica cada paso con **claridad**, incluyendo tiempos de preparación si es necesario.  
-4 **Remedios únicos:** Evita generar remedios repetitivos o sin sentido. 
-5 **Enfermedad grave:** Si la enfermedad es grave, **igualmente aconsejaras un remedio casero** pero en "tips" diras que necesita ayuda de un medico.
-6 **Coherencia:** 
-   - Si se especifica una restricción médica, **evita** ingredientes que la contradigan.
-   - El remedio debe ser **realista y factible** con los síntomas dados.
-7 **Nombre del remedio:** Debe ser **Simple y claro**.
-
-📌 **Instrucciones para "symptoms":**:
-1 El usuario proporcionará una lista de síntomas que deben ser tratados con el remedio.
-2 Los síntomas deben ser **simples y claros** (ej: "dolor de cabeza", "tos", "insomnio").
-3 El usuario podra introducir la "enfermedad" en lugar de los sintomas. (ej: "gripe", "esguince" "resfriado", "soriasis capilar", "jaqueca", etc..).
-4 Si los sintomas son graves o no son remediables con remedios caseros, **deberás indicar que el usuario necesita atención médica** en "warnings" (ej: Cancer, Emoragia graves, huesos rotos).
-   
-🚨 **INSTRUCCIONES PARA "warningmessage":** 
-1 **Ingredientes no compatibles con las restricciones:** Si el remedio contiene ingredientes que contradicen las restricciones, activa "ok": false y explica en "warningmessage".
-2 **Síntomas inválidos:** Si la lista contiene palabras que no son síntomas (sentimientos, conceptos, etc), activa "ok": false.  
-3 **Advertencias:** Si el remedio **no es seguro o es peligroso** (ej: objetos, cosas, ingredientes peligrosos de ingerir), "ok": false y incluye un "warningmessage" explicando el motivo (**el mensaje tendrá un poco de humor**).  
-4 **Si el remedio contiene nombres propios, conceptos, verbos o palabras que no son síntomas, activa "ok": false y explica en "warningmessage": "mensaje".**
+4 **Modo de aplicación:** Describe cómo y cuándo aplicar el remedio (frecuencia, cantidad, etc.).  
+5 **Descripción:** Agrega una explicación de cómo funciona o actúa el remedio generado.
+6 **INSTRUCCIONES DE INGREDIENTES**
+- La cantidad de ingredientes debe ser **proporcional** a la duración del remedio (y se explicará en los pasos).
+- Asegúrate de que los ingredientes y pasos de preparación sean **fáciles de seguir** y **accesibles** (España).
+7 **Coherencia:** 
+  - Si se especifica una duración, **ajusta** los ingredientes y pasos de preparación a esa duración.
+  - Si se especifica una restricción médica, **evita** ingredientes que la contradigan.
+  - El remedio debe ser **realista y factible** con los síntomas dados.
+8 **Nombre del remedio:** Debe ser **Corto y descriptivo** (Si en síntomas se añade la "enfermedad", puedes añadirla al nombre. Ej: Infusión para la Jaqueca).
 `;
 
 export async function POST(request) {

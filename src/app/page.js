@@ -1,4 +1,4 @@
-import IngredientInput from '../components/IngredientsInput/IngredientsInput';
+import IngredientsInput from '../components/IngredientsInput/IngredientsInput';
 import Footer from '../components/Footer/Footer';
 import Head from 'next/head';
 
@@ -7,42 +7,42 @@ export default function Home() {
     <>
       <Head>
         {/* Título de la página */}
-        <title>Comer-IA | Crea recetas con inteligencia artificial</title>
+        <title>Remed-IA | Remedios caseros con inteligencia artificial</title>
 
         {/* Descripción para SEO */}
         <meta
           name="description"
-          content="Comer-IA es una herramienta que utiliza inteligencia artificial para crear recetas personalizadas basadas en tus ingredientes y preferencias. ¡Cocina con lo que tienes en casa!"
+          content="Remed-IA es una herramienta que utiliza inteligencia artificial para crear remedios caseros personalizados basados en tus síntomas y preferencias. ¡Cuida tu salud de forma natural!"
         />
 
         {/* Palabras clave para SEO */}
         <meta
           name="keywords"
-          content="recetas, inteligencia artificial, cocina, ingredientes, IA, comida, chef, recetas personalizadas"
+          content="remedios caseros, inteligencia artificial, salud, síntomas, medicina natural, IA, bienestar, remedios personalizados"
         />
 
         {/* Open Graph (para compartir en redes sociales) */}
-        <meta property="og:title" content="Comer-IA | Crea recetas con inteligencia artificial" />
+        <meta property="og:title" content="Remed-IA | Remedios caseros con inteligencia artificial" />
         <meta
           property="og:description"
-          content="Comer-IA es una herramienta que utiliza inteligencia artificial para crear recetas personalizadas basadas en tus ingredientes y preferencias. ¡Cocina con lo que tienes en casa!"
+          content="Remed-IA es una herramienta que utiliza inteligencia artificial para crear remedios caseros personalizados basados en tus síntomas y preferencias. ¡Cuida tu salud de forma natural!"
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.comer-ia.com" />
-        <meta property="og:image" content="https://www.comer-ia.com/logoComerIA.gif" />
+        <meta property="og:url" content="https://www.remed-ia.com" />
+        <meta property="og:image" content="https://www.remed-ia.com/logoRemedyIA.png" />
         <meta property="og:image:width" content="300" />
         <meta property="og:image:height" content="300" />
-        <meta property="og:image:type" content="image/gif" />
-        <meta property="og:image:alt" content="Logo de Comer-IA" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:alt" content="Logo de Remed-IA" />
 
         {/* Twitter Card (para compartir en Twitter) */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Comer-IA | Crea recetas con inteligencia artificial" />
+        <meta name="twitter:title" content="Remed-IA | Remedios caseros con inteligencia artificial" />
         <meta
           name="twitter:description"
-          content="Comer-IA es una herramienta que utiliza inteligencia artificial para crear recetas personalizadas basadas en tus ingredientes y preferencias. ¡Cocina con lo que tienes en casa!"
+          content="Remed-IA es una herramienta que utiliza inteligencia artificial para crear remedios caseros personalizados basados en tus síntomas y preferencias. ¡Cuida tu salud de forma natural!"
         />
-        <meta name="twitter:image" content="https://www.comer-ia.com/logoComerIA.gif" />
+        <meta name="twitter:image" content="https://www.remed-ia.com/logoRemedyIA.png" />
 
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" />
@@ -51,21 +51,28 @@ export default function Home() {
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
         {/* Canonical URL (para evitar contenido duplicado) */}
-        <link rel="canonical" href="https://www.comer-ia.com" />
+        <link rel="canonical" href="https://www.remed-ia.com" />
       </Head>
 
       <main className="container">
-        <img src='/logoComerIA.gif' width='300px' alt="Comer-IA Logo" className="logo" />
+        {/* Logo de la página */}
+        <img src='/logoRemedyIA.png' width='300px' alt="Remed-IA Logo" className="logo" />
+
+        {/* Título principal */}
         <div>
-          <h1>Comer-IA</h1>
-          <h1 className='h1Page'>Crea recetas con inteligencia artificial</h1>
+          <h1>Remed-IA</h1>
+          <h1 className='h1Page'>Remedios caseros con inteligencia artificial</h1>
         </div>
 
-        <p className="description">Introduce tus ingredientes y parámetros.<br/> Una IA creará una receta para ti.</p>
+        {/* Descripción de la página */}
+        <p className="description">Describe tus síntomas y preferencias.<br/> Una IA creará un remedio casero para ti.</p>
 
+        {/* Contenedor del formulario de ingredientes */}
         <div className='box-Ingrdients'>
-          <IngredientInput />
+          <IngredientsInput />
         </div>
+
+        {/* Footer */}
         <Footer />
       </main>
     </>

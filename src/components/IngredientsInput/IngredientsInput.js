@@ -120,7 +120,7 @@ const IngredientsInput = () => {
             <option value="herbal">Herbal</option>
             <option value="crema">Crema/Pomada</option>
             <option value="infusion">Infusión</option>
-            <option value="Loción">Loción</option>
+            <option value="locion">Loción</option>
           </select>
         </div>
 
@@ -254,6 +254,16 @@ const IngredientsInput = () => {
             {remedy.preparation.map((step, i) => (
               <li key={i}>{step}</li>
             ))}
+          </div>
+          <h3>Aplicación:</h3>
+          <div className="pasos">
+            {remedy.application.map((step, i) => (
+              <li key={i}>{step}</li>
+            ))}
+          </div>
+          <h3>Descripción:</h3>
+          <div className="pasos">
+            <p>{remedy.description}</p>
           </div>
           {remedy.warnings && (
             <div className="recipe-tips warning-box">⚠️ {remedy.warnings}</div>

@@ -14,6 +14,12 @@
   transition: max-height 0.5s ease-in-out;
 }
 
+.recipe-result .description {
+  font-style: italic;
+  color: #555;
+  margin-top: 20px;
+}
+
 .filter-item {
   display: flex;
   flex-direction: column;
